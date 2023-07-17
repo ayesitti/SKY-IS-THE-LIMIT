@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+}
+
+body {
+    background-color: skyblue;
+    
+}
+h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    color: lightblue
+}
+.start-info {
+    font-size: 20px;
+    margin: 2%;
+
+}
+.main-container {
+    margin: 0 auto;
+    max-width: 800px;
+   
+}
+
+.screen {
+    background-color: beige;
+    width: 100%;
+    height: 600px;
+    margin: 5% auto;
+    text-align: center;
+    padding: 10%;
+    border-radius: 10px;
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+.hidden {
+    display: none;
+}
+button {
+    background-color: lightskyblue;
+    border: none;
+    border-radius: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 30%;
+    height: 10%;
+    margin: 10%;
+    padding: 2%;
+    font-size: 18px;
+    cursor: pointer;
+}
+.words-information, .user-life, .time, .wpm, div {
+    font-weight: bold;
+    padding: 10px 5px;
+    border-radius: 5px;
+    color: navy;
+   margin-bottom: 10px;
+
+    
+}
+
+
