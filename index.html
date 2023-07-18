@@ -10,59 +10,73 @@
     <!-- //====$$$$$$$$$$=======MAIN SCREEN PART=======$$$$$$$$$====// -->
     <section id="main-screen" class="screen">
     <div class="main-container"></div>
-    <div class="angel-container">
-        <!-- angel character in here -->
-    </div>
 
     <h1>THE SKY IS THE LIMIT</h1>
     <p class="start-info">Type as many words as you can until you reach the sky!</p>
-    <div id="cloud"></div>
-    <button id="btn-play">PLAY</button>
-    
-</section>
 
-<!--$$$$$=========== GAME SCREEN==========$$$$ -->
-<section id="game-screen" class="screen"> 
     <div class="cloud-container">
         <!-- Clouds go here -->
     </div>
     <div class="angel-container">
         <!-- angel character in here -->
     </div>
-    <div class="user-life">
-        <span>Life: </span>
-        <span>3</span>
+    <button class="btn-play">PLAY</button>
+    
+</section>
+
+<!--$$$$$=========== GAME SCREEN==========$$$$ -->
+<section id="game-screen" class="screen hidden"> 
+    <div class="cloud-container">
+        <!-- Clouds go here -->
     </div>
-    <div class="words-information">
-        <span>Score: </span>
-        <span class="wordsCount">0</span>
+    <div class="angel-container">
+        <!-- angel character in here -->
     </div>
+    <div class="time">
+        <span>Play time: </span>
+        <span class="timeDuration">0:00</span>
+      </div>
+<div class="wrapper">
+    <div class="lifeWrap">
+        <p>Life: </p>
+        <span class="life">3</span>
+    </div>
+    <div class="scoreWrap">
+        <p>Score: </p>
+        <span class="words-count">0</span>
+    </div>
+</div>
     <div class="wordsWrap">
     <p class="words"></p>
     </div>
+    
+</div>
+<div class="nextWordsWrap">
+<p class="nextWords"></p>
+</div>
 </section>
 
 
 <!-- =====$$$$$=====GAME OVER====$$$$$===== -->
-<section id="game-over-screen" class="screen"> 
+<section id="game-over-screen" class="screen hidden"> 
 <div class="container">
 <div class="words-information">
-    <span>Numbers of words: </span>
-    <span class="wordsCount">0</span>
+    <p></p>
+    <span class="scoreDisplay">0</span>
 </div>
 
 <div class="time">  
-    <span>Play time: </span>
+    <p></p>
     <span class="playDuration">0</span>
 </div>
 
 <div class="wpm">  
     <span>Words Per Minute: </span>
-    <span class="playDuration">0</span>
+    <span class="wpm">0</span>
 </div>
 
 
-<button id="btn-replay">PLAY AGAIN</button>
+<button class="btn-replay">PLAY AGAIN</button>
 </section>
 <dialog id="dialog">
 <audio id="" src=""></audio>
