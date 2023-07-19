@@ -14,6 +14,7 @@ let letterIndex = 0;
 const mainScreen = document.getElementById("main-screen");
 const gameScreen = document.getElementById("game-screen");
 const gameOver = document.getElementById("game-over-screen");
+const angelInGame = document.querySelector(".angelGameCharacter");
 let startBtn = document.querySelector(".btn-play");
 let reStartBtn = document.querySelector(".btn-replay");
 let currentWordContainer = document.querySelector(".words");
@@ -270,14 +271,40 @@ const random = (container, theWord) => {
 
   //   wordToCheck = document.querySelectorAll(".span");
 };
+
 function createSpans(word, parent) {
   for (let i = 0; i < word.length; i++) {
-    console.log(word[i]); //building the words with spans around the letters
+    console.log(word[i]);
     const span = document.createElement("span");
     span.classList.add("span");
     span.textContent = word[i];
     parent.appendChild(span);
   }
+}
+
+let bottom = 0;
+let gravity = .12;
+let isJumping = false;
+function jumpChar() {
+    if (isJumping) return;
+    let jumpUpTimerId = setInterval( () => {
+        if (bottom > 300) {
+            clearInterval(jumpUpTimerId)
+            let downTimerId = setInterval(() => {
+                if (bottom < 0) {
+                    clearInterval(downTimerId)
+                    isJumping = false;
+                }
+                bottom -=5
+                angelInGame.style.bottom = bottom + 'px'   
+            }, 20)
+        }
+        isJumping = true;
+        bottom += 30;
+        bottom = bottom + gravity;
+        console.log(bottom);
+        angelInGame.style.bottom = bottom + "px";
+    }, 20)
 }
 
 //=====$$$$$======Checking every typed letters======$$$$$=======//
@@ -301,6 +328,7 @@ const typeLetters = (e) => {
       random(nextWordContainer, theNextWord);
       points += 1;
       score.textContent = points;
+      jumpChar();
       letterIndex = 0;
       //   wordToCheck = [...spansTwo];
       // random();
