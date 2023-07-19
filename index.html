@@ -1,93 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>The Sky Is The Limit</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- //====$$$$$$$$$$=======MAIN SCREEN=======$$$$$$$$$====// -->
     <section id="main-screen" class="screen">
-    <div class="main-container"></div>
-
-    <h1>THE SKY IS THE LIMIT</h1>
-    <p class="start-info">Type as many words as you can until you reach the sky!</p>
-
-    <div class="cloud-container">
+      <div class="main-container"></div>
+      <h1>THE SKY IS THE LIMIT</h1>
+      <p class="start-info">
+        Type as many words as you can until you reach the sky!
+      </p>
+      <div class="cloud-container">
         <!-- Clouds go here -->
-    </div>
-    <div class="angelMainScreen">
+      </div>
+      <div class="angelMainScreen">
         <div class="angelMainCharacter">
-            <!-- angel character in here -->
+          <!-- angel character in here -->
         </div>
-    <button class="btn-play">PLAY</button>
-    
-</section>
+      </div>
+      <button class="btn-play">PLAY</button>
+    </section>
 
-<!--$$$$$=========== GAME SCREEN==========$$$$ -->
-<section id="game-screen" class="screen hidden"> 
-    <div class="cloud-container">
+    <!--$$$$$=========== GAME SCREEN==========$$$$ -->
+    <section id="game-screen" class="screen hidden">
+      <div class="cloud-container">
         <!-- Clouds go here -->
-    </div>
-    <div class="angel-container">
-    <div class="angelGameCharacter">
-        <!-- angel character in here -->
-    </div>
-    </div>
-    <div id="topBar">
-    <div class="time">
-        <span>Play time: </span>
-        <span class="timer">0:00</span>
+      </div>
+      <div class="angel-container">
+        <div class="angelGameCharacter">
+          <!-- angel character in here -->
+        </div>
+      </div>
+      <div id="topBar">
+        <div class="lifeWrap">
+          <p>Life:</p>
+          <span class="life">3</span>
+        </div>
+        <div class="time">
+          <!-- <span></span> -->
+          <span class="timer">0:00</span>
+        </div>
+        <div class="scoreWrap">
+          <p>Score:</p>
+          <span class="words-count">0</span>
+        </div>
       </div>
 
-    <div class="lifeWrap">
-        <p> Life: </p>
-        <span class="life">3</span>
-    </div>
-    <div class="scoreWrap">
-        <p>Score: </p>
-        <span class="words-count">0</span>
-    </div>
-    
-</div>
-    <div class="wordsWrap">
-    <p class="words"></p>
-    </div>
-    
-</div>
-<div class="nextWordsWrap">
-<p class="nextWords"></p>
-</div>
-</section>
+      <div id="wordsWrapper">
+        <div class="wordsWrap">
+          <p class="words"></p>
+        </div>
 
+        <div class="nextWordsWrap">
+          <p class="nextWords"></p>
+        </div>
+      </div>
+    </section>
 
-<!-- =====$$$$$=====GAME OVER====$$$$$===== -->
-<section id="game-over-screen" class="screen hidden"> 
-<div class="container">
-<div class="words-information">
-    <p></p>
-    <span class="scoreDisplay">0</span>
-</div>
+    <!-- =====$$$$$=====GAME OVER====$$$$$===== -->
+    <section id="game-over-screen" class="screen hidden">
+      <div class="container">
+        <div class="words-information">
+          <p></p>
+          <span class="scoreDisplay">0</span>
+        </div>
 
-<div class="time">  
-    <p></p>
-    <span class="playDuration">0</span>
-</div>
+        <div class="time">
+          <p></p>
+          <span class="playDuration">0</span>
+        </div>
 
-<div class="wpm">  
-    <span>Words Per Minute: </span>
-    <span class="wpm">0</span>
-</div>
+        <div class="wpm">
+          <span>Words Per Minute: </span>
+          <span class="wpm">0</span>
+        </div>
 
+        <button class="btn-replay">PLAY AGAIN</button>
+      </div>
+    </section>
+    <dialog id="dialog">
+      <audio id="" src=""></audio>
+    </dialog>
 
-<button class="btn-replay">PLAY AGAIN</button>
-</section>
-<dialog id="dialog">
-<audio id="" src=""></audio>
-
-</dialog>
-    
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

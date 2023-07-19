@@ -304,7 +304,7 @@ function jumpChar() {
         bottom = bottom + gravity;
         console.log(bottom);
         angelInGame.style.bottom = bottom + "px";
-    }, 20)
+    }, 10)
 }
 
 //=====$$$$$======Checking every typed letters======$$$$$=======//

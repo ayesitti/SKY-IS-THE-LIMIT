@@ -24,8 +24,8 @@ h1 {
 
 .screen {
   background-color: white;
-  width: 80%;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   margin: 5% auto;
   padding: 10%;
   border-radius: 10px;
@@ -40,10 +40,10 @@ h1 {
   height: 100vh;
   background-image: url("./Assets/clouds_pack_ask4asset/cloud2.PNG");
   background-position: center;
-  animation: move-up 10s linear infinite;
+  animation: move-down 5s linear infinite;
   overflow: hidden;
 }
-@keyframes move-up {
+@keyframes move-down {
   to {
     background-position: 0 100vh;
   }
@@ -68,7 +68,7 @@ h1 {
 :is(#game-screen, #game-over-screen, #main-screen).hidden {
   display: none;
 }
-.btn {
+button {
   float: left;
   position: relative;
   top: 0;
@@ -84,7 +84,7 @@ h1 {
 
   /* Size */
   line-height: 45px;
-  width: 100%;
+  width: 50%;
   height: 45px;
   font-size: 120%;
 
@@ -94,43 +94,40 @@ h1 {
   color: #888;
 }
 
-.btn:hover {
+button:hover {
   background: #e6e6e6;
   box-shadow: 0 5px #aaa;
   color: #888;
 }
 
 /* Imitate a pressed effect for buttons */
-.btn:active {
+button:active {
   top: 5px;
   box-shadow: none;
 }
-#btn-replay {
+/* #btn-replay {
   background-color: dodgerblue;
 }
 #btn-play {
   background-color: aqua;
-}
+} */
 
-.topBar {
-  display: flexbox;
-  justify-content: center;
-  flex-direction: row;
-  text-align: center;
-  background-color: aqua;
+#topBar {
+  display: flex;
+  justify-content: space-around;
   height: 10%;
-  width: 25%;
+  width: 100%;
 }
 .scoreWrap {
-  float: right;
-  height: 10%;
-  width: 30%;
+  display: flex;
+  gap: 20px;
 }
 .lifeWrap {
-  float: left;
+  display: flex;
+  gap: 20px;
 }
 .time {
-  position: center;
+  float: center;
 }
 
 .wordsWrap {
@@ -152,7 +149,6 @@ h1 {
   letter-spacing: 1px;
   color: white;
   animation: fadeIn 2s;
-  
 }
 .nextWords {
   font-size: 40px;
@@ -180,11 +176,14 @@ h1 {
   background-image: url(./Assets/angel.gif);
   background-repeat: no-repeat;
   background-position: center;
-  height: 40%;
+  height: 30%;
   width: 30%;
   position: absolute;
   bottom: 120px;
 }
 .cloud-container {
-  
+}
+
+#wordsWrapper {
+  width: 100%;
 }
