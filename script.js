@@ -29,6 +29,8 @@ let timeDuration = document.querySelector(".timer");
 let endTime = document.querySelector(".playDuration");
 // const heartsContainer = document.querySelector(".hearts-container");
 // const hearts = heartsContainer.querySelectorAll(".heart");
+const heartsContainer = document.querySelector(".hearts-container");
+const hearts = heartsContainer.querySelectorAll(".heart:not(.hidden)");
 
 const list = [
   "SAMPLE",
@@ -172,18 +174,17 @@ const list = [
 
 //=====$$$$$=====RESET THE VARIABLES=======$$$$$=============
 const initGame = () => {
-spans = [];
-startTimeStamp;
-timerInterval;
-gameStarted = true;
-theWord = '';
-theNextWord = '';
-letterIndex = 0;
-score.innerHTML = 0;
-lifeCount = 3;
-currentWordContainer.innerHTML = "";
-nextWordContainer.innerHTML = "";
-}
+  spans = [];
+  startTimeStamp;
+  timerInterval;
+  gameStarted = true;
+  theWord = "";
+  theNextWord = "";
+  letterIndex = 0;
+  score.innerHTML = 0;
+  currentWordContainer.innerHTML = "";
+  nextWordContainer.innerHTML = "";
+};
 
 // $$$$=====Show the main screen=====$$$$//
 const showMainScreen = () => {
@@ -218,7 +219,7 @@ const updateTimer = () => {
 const endGameTime = () => {
   const currentTime = Math.floor((Date.now() - startTimeStamp) / 1000);
   endTime.textContent = currentTime;
-  console.log((currentTime));
+  console.log(currentTime);
 };
 const startTimer = () => {
   startTimeStamp = Date.now();
@@ -230,6 +231,7 @@ const stopTimer = () => {
 };
 // ===$$$$======START GAME=====$$$$======
 const startGame = () => {
+  lifeCount = 3;
   initGame();
   showGameScreen();
   endGameTime();
@@ -243,6 +245,7 @@ const gameOverLogic = () => {
   showGameOver();
   stopTimer();
   endGameTime();
+  
   // const scoreDisplay = document.querySelector('.words-count');
   // console.log(points);
   endScore.textContent = `GAME OVER! You typed ${points} word(s) `;
@@ -274,37 +277,39 @@ function createSpans(word, parent) {
     parent.appendChild(span);
   }
 }
-let bottom = 0;
-let gravity = .12;
-let isJumping = false;
-function jumpChar() {
-    if (isJumping) return;
-    let jumpUpTimerId = setInterval( () => {
-        if (bottom > 300) {
-            clearInterval(jumpUpTimerId)
-            let downTimerId = setInterval(() => {
-                if (bottom < 0) {
-                    clearInterval(downTimerId)
-                    isJumping = false;
-                }
-                bottom -=5
-                angelInGame.style.bottom = bottom + 'px'   
-            }, 20)
-        }
-        isJumping = true;
-        bottom += 30;
-        bottom = bottom + gravity;
-        console.log(bottom);
-        angelInGame.style.bottom = bottom + "px";
-    }, 10)
-}
+
+
+// let bottom = 0;
+// let gravity = 0.12;
+// let isJumping = false;
+// function jumpChar() {
+//   if (isJumping) return;
+//   let jumpUpTimerId = setInterval(() => {
+//     if (bottom > 300) {
+//       clearInterval(jumpUpTimerId);
+//       let downTimerId = setInterval(() => {
+//         if (bottom < 0) {
+//           clearInterval(downTimerId);
+//           isJumping = false;
+//         }
+//         bottom -= 5;
+//         angelInGame.style.bottom = bottom + "px";
+//       }, 20);
+//     }
+//     isJumping = true;
+//     bottom += 30;
+//     bottom = bottom + gravity;
+//     console.log(bottom);
+//     angelInGame.style.bottom = bottom + "px";
+//   }, 10);
+// }
 
 //=====$$$$$======Checking every typed letters======$$$$$=======//
 const typeLetters = (e) => {
   if (!gameStarted) return;
   let typed = e.key.toUpperCase();
   let currentSpan = wordToCheck[letterIndex];
-  
+
   if (currentSpan.textContent === typed) {
     currentSpan.classList.add("bg");
     letterIndex++;
@@ -319,7 +324,9 @@ const typeLetters = (e) => {
       points += 1;
       score.textContent = points;
       console.log(points);
-      jumpChar();
+      angelInGame.classList.add('jumpAnimation')
+      setTimeout(() => angelInGame.classList.remove("jumpAnimation"), 2000);
+      //jumpChar();
       letterIndex = 0;
       //   wordToCheck = [...spansTwo];
       // random();
@@ -329,41 +336,39 @@ const typeLetters = (e) => {
     }
   } else {
     lifeCount -= 1;
-    // updateHearts();
     console.log(lifeCount);
     currentSpan.classList.add("error");
     setTimeout(() => currentSpan.classList.remove("error"), 200);
-    console.log("typo");
+    hearts[0].classList.add("hidden")
+    console.log("decrement the heart");
     
   }
-  life.textContent = lifeCount;
+  //   life.textContent = lifeCount;
   if (lifeCount <= 0) {
     gameOverLogic();
   }
 
-  
-//   for (let i=1; i <= 3; i++) {
-//     const heart = document.querySelectorAll(`hearts${i}`);
-//     if (i > lifeCount) {
-//         heart.style.display = 'none';
-//     } else {
-//         heart.style.display = 'inline-block'
-//     }
-//   }
+  //   for (let i=1; i <= 3; i++) {
+  //     const heart = document.querySelectorAll(`hearts${i}`);
+  //     if (i > lifeCount) {
+  //         heart.style.display = 'none';
+  //     } else {
+  //         heart.style.display = 'inline-block'
+  //     }
+  //   }
 };
-const updateHearts = (lifeCount) => {
-    const heartsContainer = document.querySelector(".hearts-container");
-    const hearts = heartsContainer.querySelectorAll(".heart");
-    
-    for (let i = 3; i < hearts.length-1; i--) {
-      if (i === 2) {
-        hearts[i].classList.add("hidden");
-      } else {
-        hearts[i].classList.remove("hidden");
-      }
-    }
-  };
-  
+// const updateHearts = (lifeCount) => {
+// //   const heartsContainer = document.querySelector(".hearts-container");
+// //   const hearts = heartsContainer.querySelectorAll(".heart");
+//   hearts[0].classList.add("hidden");
+// //   if (gameStarted) {
+// //     hearts[0].classList.remove("hidden")
+// // //   }
+// //   for (let i = 3; i > 0; i--) {
+// //       hearts[0].classList.add("hidden");
+// //   }
+// }
+
 // const removeHearts = () => {
 //   if (lifeCount === 3) {
 //     heartThree.classList.remove("hidden")
@@ -387,7 +392,6 @@ const updateHearts = (lifeCount) => {
 //   }
 // }
 //====$$ CLICK BUTTON $$==== //
-
 
 document.addEventListener("keydown", typeLetters);
 
