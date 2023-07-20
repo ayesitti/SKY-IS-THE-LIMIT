@@ -14,6 +14,9 @@ let letterIndex = 0;
 const mainScreen = document.getElementById("main-screen");
 const gameScreen = document.getElementById("game-screen");
 const gameOver = document.getElementById("game-over-screen");
+// const heartOne = document.getElementById("heart1");
+// const heartTwo = document.getElementById("heart2");
+// const heartThree= document.getElementById("heart3");
 const angelInGame = document.querySelector(".angelGameCharacter");
 let startBtn = document.querySelector(".btn-play");
 let reStartBtn = document.querySelector(".btn-replay");
@@ -24,6 +27,8 @@ let life = document.querySelector(".life");
 let endScore = document.querySelector(".scoreDisplay");
 let timeDuration = document.querySelector(".timer");
 let endTime = document.querySelector(".playDuration");
+const heartsContainer = document.querySelector(".hearts-container");
+const hearts = heartsContainer.querySelectorAll(".heart");
 
 const list = [
   "SAMPLE",
@@ -166,18 +171,19 @@ const list = [
 ];
 
 //=====$$$$$=====RESET THE VARIABLES=======$$$$$=============
-// const initGame = () => {
-// spans = [];
-// points = 0; // will be used to keep track of the player's score
-// lifeCount = 3;
-// startTimeStamp;
-// timerInterval;
-// gameStarted = false;
-// theWord = '';
-// theNextWord = '';
-// letterIndex = 0;
-// nextLetterIndex = 0;
-// }
+const initGame = () => {
+spans = [];
+startTimeStamp;
+timerInterval;
+gameStarted = true;
+theWord = '';
+theNextWord = '';
+letterIndex = 0;
+score.innerHTML = 0;
+lifeCount = 3;
+currentWordContainer.innerHTML = "";
+nextWordContainer.innerHTML = "";
+}
 
 // $$$$=====Show the main screen=====$$$$//
 const showMainScreen = () => {
@@ -211,7 +217,8 @@ const updateTimer = () => {
 };
 const endGameTime = () => {
   const currentTime = Math.floor((Date.now() - startTimeStamp) / 1000);
-  timeDuration.textContent = currentTime;
+  endTime.textContent = currentTime;
+  console.log((currentTime));
 };
 const startTimer = () => {
   startTimeStamp = Date.now();
@@ -223,12 +230,9 @@ const stopTimer = () => {
 };
 // ===$$$$======START GAME=====$$$$======
 const startGame = () => {
-  // initGame();
+  initGame();
   showGameScreen();
-  lifeCount = 3;
-  points = 0;
-  currentWordContainer.innerHTML = "";
-  nextWordContainer.innerHTML = "";
+  endGameTime();
   startTimer();
   timerInterval = setInterval(updateTimer, 1000);
 };
@@ -238,6 +242,7 @@ const gameOverLogic = () => {
   gameStarted = false;
   showGameOver();
   stopTimer();
+  endGameTime();
   // const scoreDisplay = document.querySelector('.words-count');
   // console.log(points);
   endScore.textContent = `GAME OVER! You typed ${points} word(s) `;
@@ -258,18 +263,6 @@ const random = (container, theWord) => {
   const wordArray = theWord.split("");
 
   createSpans(wordArray, container);
-
-  // const currentNextWordIndex = Math.floor(Math.random() * list.length); //generate random array index
-  // theNextWord = list[currentNextWordIndex]
-  // const nextWordArray = theNextWord.split("");
-  // for (let i = 0; i < nextWordArray.length; i++) {
-  // const span = document.createElement("span");
-  // span.classList.add("span");
-  // span.textContent = nextWordArray[i];
-  // words.appendChild(span);
-  // }
-
-  //   wordToCheck = document.querySelectorAll(".span");
 };
 
 function createSpans(word, parent) {
@@ -281,7 +274,6 @@ function createSpans(word, parent) {
     parent.appendChild(span);
   }
 }
-
 let bottom = 0;
 let gravity = .12;
 let isJumping = false;
@@ -312,9 +304,7 @@ const typeLetters = (e) => {
   if (!gameStarted) return;
   let typed = e.key.toUpperCase();
   let currentSpan = wordToCheck[letterIndex];
-  // if (letterIndex === 0) {
-  //     startTimer();
-  // }
+  
   if (currentSpan.textContent === typed) {
     currentSpan.classList.add("bg");
     letterIndex++;
@@ -328,6 +318,7 @@ const typeLetters = (e) => {
       random(nextWordContainer, theNextWord);
       points += 1;
       score.textContent = points;
+      console.log(points);
       jumpChar();
       letterIndex = 0;
       //   wordToCheck = [...spansTwo];
@@ -338,21 +329,68 @@ const typeLetters = (e) => {
     }
   } else {
     lifeCount -= 1;
+    
     console.log(lifeCount);
     currentSpan.classList.add("error");
     setTimeout(() => currentSpan.classList.remove("error"), 200);
     console.log("typo");
+    
   }
   life.textContent = lifeCount;
   if (lifeCount <= 0) {
     gameOverLogic();
   }
-};
 
-//===$$$======$$$$===========
+  
+//   for (let i=1; i <= 3; i++) {
+//     const heart = document.querySelectorAll(`hearts${i}`);
+//     if (i > lifeCount) {
+//         heart.style.display = 'none';
+//     } else {
+//         heart.style.display = 'inline-block'
+//     }
+//   }
+};
+const updateHearts = (lifeCount) => {
+    const heartsContainer = document.querySelector(".hearts-container");
+    const hearts = heartsContainer.querySelectorAll(".heart");
+    
+    for (let i = 3; i < hearts.length-1; i--) {
+      if (i >= lifeCount) {
+        hearts[i].classList.add("hidden");
+      } else {
+        hearts[i].classList.remove("hidden");
+      }
+    }
+  };
+  
+// const removeHearts = () => {
+//   if (lifeCount === 3) {
+//     heartThree.classList.remove("hidden")
+//     heartTwo.classList.remove("hidden")
+//     heartOne.classList.remove("hidden")
+//   }
+//    if (lifeCount === 2) {
+//     heartThree.classList.add("hidden")
+//     heartTwo.classList.remove("hidden")
+//     heartOne.classList.remove("hidden")
+//   }
+//   if (lifeCount === 1) {
+//     heartThree.classList.add("hidden")
+//     heartTwo.classList.add("hidden")
+//     heartOne.classList.remove("hidden")
+//   }
+//   else {
+//     heartThree.classList.add("hidden")
+//     heartTwo.classList.add("hidden")
+//     heartOne.classList.add("hidden")
+//   }
+// }
+//====$$ CLICK BUTTON $$==== //
+
 
 document.addEventListener("keydown", typeLetters);
-//====$$ CLICK START BUTTON $$==== //
+
 startBtn.addEventListener("click", function (e) {
   startGame();
   random(currentWordContainer, theWord);

@@ -6,14 +6,18 @@
     <title>Document</title>
     <style>
       body {
-        height: 100vh;
-        background: url("./Assets/clouds_pack_ask4asset/cloud2.PNG");
-        animation: move-down 5s linear infinite;
+        height: 150vh;
+        background: url("./Assets/clouds_pack_ask4asset/vecteezy_abstract-kawaii-clouds-cartoon-background_12914405_493\ Medium.jpeg");
+        animation: move-up 5s linear infinite;
+        background-repeat: repeat;
         overflow: hidden;
       }
-      @keyframes move-down {
+      @keyframes move-up {
+        from {
+            bottom: 0;
+        }
         to {
-          background-position: 0 100vh;
+          background-position: 100vh;
         }
       }
     </style>
