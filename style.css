@@ -132,7 +132,10 @@ button:active {
   width: 100%;
   position: fixed;
   top: 0;
+  padding-top: 30px;
+  font-size: 30px;
 }
+
 .scoreWrap {
   display: flex;
   gap: 20px;
@@ -179,6 +182,10 @@ div.wordsWrap {
   color: white;
 } */
 
+.container p{
+  padding: 20px;
+  font-size: 30px;
+}
 .words span {
   transition: all 200ms ease-in-out;
   font-family: "lolita";

@@ -4,14 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap"
-      rel="stylesheet"
-    />
     <script src="script.js" type="module"></script>
 
     <title>The Sky Is The Limit</title>
@@ -86,8 +78,8 @@
     <!-- =====$$$$$=====GAME OVER====$$$$$===== -->
     <section id="game-over-screen" class="screen hidden">
       <div class="container">
+        <p>GAME OVER!</p>
         <div class="words-information">
-          <p></p>
           <span class="scoreDisplay">0</span>
         </div>
 
@@ -96,7 +88,7 @@
         </div>
 
         <div class="wpm">
-          <span>Words Per Minute: </span>
+          <span>Your average Words Per Minute: </span>
           <span class="wpm">0</span>
         </div>
 
@@ -104,10 +96,19 @@
       </div>
     </section>
     <dialog id="dialog">
-      <audio controls>
-        <source src="./Assets/mixkit-video-game-treasure-2066.wav"
-      </audio>
-      <audio id="" src=""></audio>
+      <audio id="mainAudio" src="./Assets/8-bit-dream-land-142093.mp3"></audio>
+      <audio
+        id="inGameAudio"
+        src="./Assets/y2mate.com - Angel heavenly choir singing ahhh sound effect.mp3"
+      ></audio>
+      <audio
+        id="correctWordAudio"
+        src="./Assets/mixkit-video-game-treasure-2066.wav"
+      ></audio>
+      <audio
+        id="gameOver"
+        src="./Assets/mixkit-player-losing-or-failing-2042.wav"
+      ></audio>
     </dialog>
   </body>
 </html>

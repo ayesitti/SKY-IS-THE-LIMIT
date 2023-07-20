@@ -11,6 +11,8 @@ let theWord = "";
 let theNextWord = "";
 let letterIndex = 0;
 let spans = [];
+const inGameMusic = document.getElementById("inGameAudio");
+const mainScreenMusic = document.getAnimations("mainAudio")
 // DOM elements
 const mainScreen = document.getElementById("main-screen");
 const gameScreen = document.getElementById("game-screen");
@@ -47,6 +49,7 @@ const showMainScreen = () => {
   mainScreen.classList.remove("hidden");
   gameScreen.classList.add("hidden");
   gameOver.classList.add("hidden");
+  playMainAudio()
 };
 
 // Function to show the game screen
@@ -106,9 +109,8 @@ const gameOverLogic = () => {
   showGameOver();
   stopTimer();
   endGameTime();
-  endScore.textContent = `GAME OVER! 
-    You typed ${points} word(s) `;
-  endTime.textContent = `in ${endTime.textContent}seconds`;
+  endScore.textContent = `You typed ${points} word(s) `;
+  endTime.textContent = `in ${endTime.textContent} seconds`;
 };
 
 // Function to generate a random word from the list
@@ -186,15 +188,19 @@ const updateHearts = (lifeCount) => {
   // });
 };
 
-// // Audio functions
-// const typingAudio = getElementById
+// Audio functions
 
 // function typingStyle (){
 //     typingAudio.play()
 // }
-// const gameOverAudio = () => {
-//     new audio (url)
-// }
+//rename to AngelAuidio
+const playInGameAudio = () => {
+    inGameMusic.play();
+}
+const playMainAudio = () => {
+  mainScreenMusic.play();
+}
+
 
 // Event listener for keydown event to handle typing letters
 document.addEventListener("keydown", typeLetters);
@@ -206,6 +212,7 @@ startBtn.addEventListener("click", function (e) {
   random(nextWordContainer, theNextWord);
   wordToCheck = document.querySelectorAll(".words span");
   gameStarted = true;
+  playInGameAudio();
 });
 
 // Event listener for the "Restart" button
