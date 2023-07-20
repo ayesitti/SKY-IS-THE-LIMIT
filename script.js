@@ -325,7 +325,7 @@ const typeLetters = (e) => {
       score.textContent = points;
       console.log(points);
       angelInGame.classList.add('jumpAnimation')
-      setTimeout(() => angelInGame.classList.remove("jumpAnimation"), 2000);
+      setTimeout(() => angelInGame.classList.remove("jumpAnimation"), 1000);
       //jumpChar();
       letterIndex = 0;
       //   wordToCheck = [...spansTwo];
