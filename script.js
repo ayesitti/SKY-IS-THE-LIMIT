@@ -27,8 +27,8 @@ let life = document.querySelector(".life");
 let endScore = document.querySelector(".scoreDisplay");
 let timeDuration = document.querySelector(".timer");
 let endTime = document.querySelector(".playDuration");
-const heartsContainer = document.querySelector(".hearts-container");
-const hearts = heartsContainer.querySelectorAll(".heart");
+// const heartsContainer = document.querySelector(".hearts-container");
+// const hearts = heartsContainer.querySelectorAll(".heart");
 
 const list = [
   "SAMPLE",
@@ -329,7 +329,7 @@ const typeLetters = (e) => {
     }
   } else {
     lifeCount -= 1;
-    
+    // updateHearts();
     console.log(lifeCount);
     currentSpan.classList.add("error");
     setTimeout(() => currentSpan.classList.remove("error"), 200);
@@ -356,7 +356,7 @@ const updateHearts = (lifeCount) => {
     const hearts = heartsContainer.querySelectorAll(".heart");
     
     for (let i = 3; i < hearts.length-1; i--) {
-      if (i >= lifeCount) {
+      if (i === 2) {
         hearts[i].classList.add("hidden");
       } else {
         hearts[i].classList.remove("hidden");
