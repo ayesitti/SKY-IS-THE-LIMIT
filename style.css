@@ -5,26 +5,30 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "lolita";
 }
+
 body {
-  background-color: white;
+  /*To hide the horizontal scroller appearing during the animation*/
+  overflow: hidden;
+  height: 100vh;
+  font-family: "lolita";
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 5rem;
   font-weight: bolder;
   color: beige;
-  .tracking-in-expand {
-    -webkit-animation: tracking-in-expand 0.7s
-      cubic-bezier(0.215, 0.61, 0.355, 1) both;
-    animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  }
+  font-family: "lolita";
+  font-weight: 800;
+}
+.words-information {
+  font-family: "lolita";
 }
 .start-info {
   font-size: 20px;
   margin: 2%;
+  font-family: "lolita";
+  font-weight: lighter;
 }
 .main-container {
   margin: 0 auto;
@@ -34,44 +38,45 @@ h1 {
 /* .screen {
 
   background-color: white;
-  width: 100%;
-  height: 100%;
+  width: 0%;
+  height: 0%;
   margin: 5% auto;
   padding: 10%;
   border-radius: 10px;
 } */
 
 #main-screen {
-  height: 100vh;
-  background-color: #6dd3e7;
+  translate: 0% -50%;
   text-align: center;
-  padding-top: 30vh;
-  background-image: url("./Assets/clouds_pack_ask4asset/cloud2.PNG");
+
+  /* background-image: url("./Assets/clouds_pack_ask4asset/cloud2.PNG"); */
   background-position: center;
-  animation: move-down 5s linear infinite;
-  overflow: hidden;
+  /* /animation: move-down 5s linear infinite; */
+  /* overflow: hidden; */
+  z-index: 999;
+  position: relative;
 }
+
 @keyframes move-down {
   to {
     background-position: 0 100vh;
   }
 }
 
-#game-screen {
+/* #game-screen {
   background-color: #6dd3e7;
-  height: 100vh;
-  width: 100vw;
-}
+  height: 100%;~
+  width: 100%;
+} */
 
 #game-over-screen {
   background-color: #6dd3e7;
-  height: 100vh;
 }
 
 .container {
-  border: solid white 10px;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  padding: 30vh;
 }
 
 .hidden {
@@ -86,19 +91,27 @@ button {
   margin: 0 7px 11px 0;
   padding: 0 20px;
   text-align: center;
-
   transition: all 0.3s ease;
-
-  /* Size */
   line-height: 45px;
   width: 50%;
   height: 45px;
   font-size: 120%;
-
-  /* Colors */
   background: #f7f7f7;
-  box-shadow: 0 6px rgba(0, 0, 0, 0.2);
-  color: #888;
+
+  border: 0.75px solid grey;
+  border-radius: 30px;
+  padding: 0px 0px 0px 0px;
+  width: 12rem;
+  height: 3rem;
+  font-family: "lolita";
+}
+button:hover {
+  box-shadow: 0 16px rgba(0, 0, 0, 0.2);
+
+  font-weight: 800;
+}
+button:hover a {
+  color: #ffffff;
 }
 
 button:hover {
@@ -117,7 +130,8 @@ button:active {
   justify-content: space-around;
   height: 10%;
   width: 100%;
-  padding-top: 10vh;
+  position: fixed;
+  top: 0;
 }
 .scoreWrap {
   display: flex;
@@ -126,14 +140,24 @@ button:active {
 p.lifeWrap {
   display: flex;
 }
+/* #heart1 {
 
+}
+#heart2 {
+
+}
+#heart3 {
+
+} */
 .time {
   float: center;
 }
 
-#wordsWrapper {
-
-  padding-top: 40vh;
+div.wordsWrap {
+  display: flex;
+  justify-content: center;
+  border: none;
+  bottom: 120px;
 }
 .nextWordsWrap {
   display: flex;
@@ -141,6 +165,7 @@ p.lifeWrap {
   height: 20%;
   border: none;
   bottom: 50px;
+  font-family: "lolita";
 }
 /* .words {
   font-size: 50px;
@@ -156,8 +181,9 @@ p.lifeWrap {
 
 .words span {
   transition: all 200ms ease-in-out;
+  font-family: "lolita";
+  font-size: 100px;
 }
-
 .bg {
   background-color: pink;
 }
@@ -198,17 +224,16 @@ p.lifeWrap {
 /* .cloud-container {
 } */
 
-.wordsWrapper div {
+.wordsWrapper {
   display: flex;
   justify-content: center;
-  padding-top: 30vh;
 }
 .words {
   display: flex;
   justify-content: center;
   font-size: 80px;
   letter-spacing: 1px;
-  color: white;
+  color: #6dd3e7;
   animation: fadeIn 2s;
 }
 p.nextWords {
@@ -216,7 +241,7 @@ p.nextWords {
   justify-content: center;
   font-size: 60px;
   letter-spacing: 1px;
-  color: white;
+  color: #6dd3e7;
 }
 .heart {
   width: 20px;
@@ -228,40 +253,39 @@ p.nextWords {
   justify-content: none;
 }
 
+.invisible {
+  opacity: 0;
+}
+
 /*** CLOUD***/
 
 /*Lets start with the cloud formation rather*/
 
 /*The container will also serve as the SKY*/
+/*Lets start with the cloud formation rather*/
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  /*To hide the horizontal scroller appearing during the animation*/
-  overflow: hidden;
-}
+/*The container will also serve as the SKY*/
 
 #clouds {
   padding: 100px 0;
-  background: #c9dbe9;
-  background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);
-  background: -linear-gradient(top, #c9dbe9 0%, #fff 100%);
-  background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
+  background-color: #6dd3e7;
+  background: -webkit-linear-gradient(top, #6dd3e7 0%, #fff 100%);
+  background: -linear-gradient(top, #6dd3e7 0%, #fff 100%);
+  background: -moz-linear-gradient(top, #6dd3e7 0%, #fff 100%);
+  position: relative;
+  z-index: 0;
 }
 
 /*Time to finalise the cloud shape*/
 .cloud {
   width: 200px;
   height: 60px;
-  background: grey;
+  background: #fff;
 
   border-radius: 200px;
   -moz-border-radius: 200px;
   -webkit-border-radius: 200px;
-
+  z-index: 0;
   position: relative;
 }
 
@@ -283,6 +307,7 @@ body {
   -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
   -moz-transform: rotate(30deg);
+  z-index: 10;
 }
 
 .cloud:after {
@@ -295,9 +320,9 @@ body {
 
 /*Time to animate*/
 .x1 {
-  -webkit-animation: moveclouds 200s linear infinite;
-  -moz-animation: moveclouds 200s linear infinite;
-  -o-animation: moveclouds 200s linear infinite;
+  -webkit-animation: moveclouds 15s linear infinite;
+  -moz-animation: moveclouds 15s linear infinite;
+  -o-animation: moveclouds 15s linear infinite;
 }
 
 /*variable speed, opacity, and position of clouds for realistic effect*/

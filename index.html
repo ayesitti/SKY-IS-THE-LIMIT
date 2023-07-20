@@ -4,47 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" type="module"></script>
 
     <title>The Sky Is The Limit</title>
   </head>
 
   <body>
-    <!-- Main Screen -->
-    <section id="main-screen" class="screen">
-      <div class="main-container"></div>
-      <h1>THE SKY IS THE LIMIT</h1>
-      <p class="start-info">
-        Type as many words as you can until you reach the sky!
-      </p>
-      <div class="cloud-container">
-        <!-- Clouds go here -->
-      </div>
-      <div class="angelMainScreen">
-        <div class="angelMainCharacter">
-          <!-- Angel character goes here -->
-        </div>
-      </div>
-      <button class="btn-play">PLAY</button>
-    </section>
+    <!-- //====$$$$$$$$$$=======MAIN SCREEN=======$$$$$$$$$====// -->
 
-    <!-- Game Screen -->
+    <div id="clouds" class="">
+      <div class="cloud x1"></div>
+
+      <div class="cloud x2"></div>
+      <div class="cloud x3"></div>
+      <div class="cloud x4"></div>
+      <div class="cloud x5"></div>
+
+      <section id="main-screen" class="screen">
+        <div class="main-container"></div>
+        <h1>THE SKY IS THE LIMIT</h1>
+        <p class="start-info">
+          Type as many words as you can until you reach the sky!
+        </p>
+        <div class="cloud-container">
+          <!-- Clouds go here -->
+        </div>
+        <div class="angelMainScreen">
+          <div class="angelMainCharacter">
+            <!-- angel character in here -->
+          </div>
+        </div>
+        <button class="btn-play">PLAY</button>
+      </section>
+    </div>
+
+    <!--$$$$$=========== GAME SCREEN==========$$$$ -->
     <section id="game-screen" class="screen hidden">
       <div class="cloud-container">
         <!-- Clouds go here -->
       </div>
       <div class="angel-container">
         <div class="angelGameCharacter jumpAnimation">
-          <!-- Angel character goes here -->
+          <!-- angel character in here -->
         </div>
       </div>
       <div id="topBar">
         <div class="hearts-container">
-          <!-- Hearts go here -->
           <img src="Assets/heart (2).png" alt="heartsimage" class="heart" />
           <img src="Assets/heart (2).png" alt="heartsimage" class="heart" />
           <img src="Assets/heart (2).png" alt="heartsimage" class="heart" />
         </div>
         <div class="time">
+          <!-- <span></span> -->
           <span class="timer">0:00</span>
         </div>
         <div class="scoreWrap">
@@ -64,7 +83,7 @@
       </div>
     </section>
 
-    <!-- Game Over Screen -->
+    <!-- =====$$$$$=====GAME OVER====$$$$$===== -->
     <section id="game-over-screen" class="screen hidden">
       <div class="container">
         <div class="words-information">
@@ -84,16 +103,11 @@
         <button class="btn-replay">PLAY AGAIN</button>
       </div>
     </section>
-
-    <!-- Audio Dialog -->
     <dialog id="dialog">
       <audio controls>
-        <source src="./Assets/mixkit-video-game-treasure-2066.wav" />
-        <audio id="" src=""></audio>
+        <source src="./Assets/mixkit-video-game-treasure-2066.wav"
       </audio>
+      <audio id="" src=""></audio>
     </dialog>
-
-    <!-- JavaScript file -->
-    <script src="script.js"></script>
   </body>
 </html>
