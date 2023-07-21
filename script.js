@@ -11,15 +11,21 @@ let theWord = "";
 let theNextWord = "";
 let letterIndex = 0;
 let spans = [];
-const inGameMusic = document.getElementById("inGameAudio");
-const mainScreenMusic = document.getAnimations("mainAudio")
+const flyingAngel = document.getElementById("flyingAngelAudio");
+const mainScreenMusic = document.getElementById("mainAudio");
+const correctAudio = document.getElementById("correctWordAudio");
+const gameOverAudio = document.getElementById("gameOverAudio");
+const typoErrorAudio = document.getElementById("typoAudio")
 // DOM elements
 const mainScreen = document.getElementById("main-screen");
 const gameScreen = document.getElementById("game-screen");
 const gameOver = document.getElementById("game-over-screen");
 const angelInGame = document.querySelector(".angelGameCharacter");
-let startBtn = document.querySelector(".btn-play");
-let reStartBtn = document.querySelector(".btn-replay");
+const startBtn = document.querySelector(".btn-play");
+const reStartBtn = document.querySelector(".btn-replay");
+// const musicBtn = document.getEementById("btn-music");
+// const mainMusicAudio = document.getElementById("mainAudio");
+
 let currentWordContainer = document.querySelector(".words");
 let nextWordContainer = document.querySelector(".nextWords");
 let score = document.querySelector(".words-count");
@@ -49,7 +55,7 @@ const showMainScreen = () => {
   mainScreen.classList.remove("hidden");
   gameScreen.classList.add("hidden");
   gameOver.classList.add("hidden");
-  playMainAudio()
+  playMainAudio();
 };
 
 // Function to show the game screen
@@ -57,6 +63,7 @@ const showGameScreen = () => {
   mainScreen.classList.add("hidden");
   gameScreen.classList.remove("hidden");
   gameOver.classList.add("hidden");
+  playMainAudio;
 };
 
 // Function to show the game over screen
@@ -109,6 +116,7 @@ const gameOverLogic = () => {
   showGameOver();
   stopTimer();
   endGameTime();
+  playGameOver();
   endScore.textContent = `You typed ${points} word(s) `;
   endTime.textContent = `in ${endTime.textContent} seconds`;
 };
@@ -154,15 +162,17 @@ const typeLetters = (e) => {
       random(nextWordContainer, theNextWord);
       points += 1;
       score.textContent = points;
+      playCorrectWordAudio();
 
       // Perform jump animation when word is typed correctly
       angelInGame.classList.add("jumpAnimation");
-      setTimeout(() => angelInGame.classList.remove("jumpAnimation"), 2000);
+      setTimeout(() => angelInGame.classList.remove("jumpAnimation"), 1000);
       //jumpChar();
       letterIndex = 0;
     }
   } else {
     lifeCount -= 1;
+    playTypoAudio()
     currentSpan.classList.add("error");
     setTimeout(() => currentSpan.classList.remove("error"), 200);
     updateHearts(lifeCount);
@@ -190,15 +200,24 @@ const updateHearts = (lifeCount) => {
 
 // Audio functions
 
-// function typingStyle (){
-//     typingAudio.play()
-// }
-//rename to AngelAuidio
-const playInGameAudio = () => {
-    inGameMusic.play();
+const playFlyingAngel = () => {
+  flyingAngel.play();
 }
 const playMainAudio = () => {
   mainScreenMusic.play();
+}
+// const pauseMainAudio = () => {
+//   mainScreenMusic.pause();
+// };
+const playCorrectWordAudio = () => {
+  correctAudio.play();
+}
+const playTypoAudio = () => {
+  typoErrorAudio.play();
+}
+
+const playGameOver = () => {
+  gameOverAudio.play();
 }
 
 
@@ -212,7 +231,7 @@ startBtn.addEventListener("click", function (e) {
   random(nextWordContainer, theNextWord);
   wordToCheck = document.querySelectorAll(".words span");
   gameStarted = true;
-  playInGameAudio();
+  playFlyingAngel();
 });
 
 // Event listener for the "Restart" button
@@ -222,4 +241,26 @@ reStartBtn.addEventListener("click", function (e) {
   random(nextWordContainer, theNextWord);
   wordToCheck = document.querySelectorAll(".words span");
   gameStarted = true;
+  playFlyingAngel();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  let musicBtn = document.querySelector("#btn-music");
+  let mainMusicAudio = document.getElementById("mainAudio");
+  
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      mainMusicAudio.pause();
+      musicBtn.textContent = "🎵";
+    } else {
+      mainMusicAudio.play();
+      musicBtn.textContent = "🔇";
+    }
+    isPlaying = !isPlaying;
+  }
+
+  musicBtn.addEventListener("click", toggleMusic);
+});
+
