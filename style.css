@@ -154,6 +154,8 @@ h1 {
 .titi {
   display: flex;
   justify-content: center;
+  border-radius: 5%;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 #game-over-screen {
@@ -162,7 +164,8 @@ h1 {
   top: 50%;
   translate: 0 -30%;
   width: 40%;
-  border: 5px solid black;
+  border: 10px solid black;
+  border-radius: 40px;
 }
 .endGameResultText {
   display: block;
@@ -183,10 +186,10 @@ h1 {
 
 button {
   cursor: pointer;
-  border: solid black 2px;
+  border: none;
   border-radius: 30px;
   margin: 0 7px 11px 0;
-  padding: 0 20px;
+  padding: 10 20px;
   text-align: center;
   transition: all 0.3s ease;
   line-height: 45px;
@@ -258,15 +261,7 @@ button:active {
 p.lifeWrap {
   display: flex;
 }
-/* #heart1 {
 
-}
-#heart2 {
-
-}
-#heart3 {
-
-} */
 .time {
   float: center;
 }
@@ -286,17 +281,7 @@ div.wordsWrap {
   bottom: 50px;
   font-family: "lolita";
 }
-/* .words {
-  font-size: 50px;
-  letter-spacing: 1px;
-  color: white;
-  animation: fadeIn 2s;
-} */
-/* .nextWords {
-  font-size: 40px;
-  letter-spacing: 1px;
-  color: white;
-} */
+
 
 .container p {
   padding: 20px;
@@ -374,11 +359,11 @@ div.wordsWrap {
   justify-content: center;
 }
 .angelGameCharacter {
-  background-image: url(./Assets/angel.gif);
+  background-image: url(./Assets/./angel.gif);
   background-repeat: no-repeat;
   background-position: center;
-  height: 3rem;
-  width: 3rem;
+  height: 40rem;
+  width: 40rem;
   position: absolute;
   animation: jumpAnimation 4s infinite alternate cubic-bezier(0.42, 0, 0.58, 1);
   top: 50%;
@@ -434,10 +419,9 @@ p.nextWords {
   opacity: 0;
 }
 
-/* //CLOUD BACKGROUND FROM  */
+/* //CLOUD BACKGROUND FROM CodePen */
 /*** CLOUD***/
 
-/*Lets start with the cloud formation rather*/
 
 /*The container will also serve as the SKY*/
 /*Lets start with the cloud formation rather*/

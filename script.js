@@ -89,7 +89,6 @@ const updateTimer = () => {
 const computeWPM = (endScore, endTimeInSeconds) => {
   const totalTimeInMinutes = endTimeInSeconds / 60;
   const WPM = endScore / totalTimeInMinutes;
-  const roundedWPM = Math.floor(WPM);
   return WPM;
 };
 
@@ -228,7 +227,7 @@ const typeLetters = (e) => {
       random(nextWordContainer, theNextWord);
       points += 1;
       score.textContent = points;
-      playCorrectWordAudio();
+    
 
       // Perform jump animation when word is typed correctly
       angelInGame.classList.add("jumpAnimation");
@@ -255,13 +254,6 @@ const updateHearts = (lifeCount) => {
   const hearts = heartsContainer.querySelectorAll(".heart:not(.invisible)");
   hearts[0].classList.add("invisible");
 
-  // hearts.forEach((heart, index) => {
-  //     if (index < lifeCount) {
-  //         heart.classList.remove("hidden");
-  //     } else {
-  //         heart.classList.add("hidden");
-  //     }
-  // });
 };
 
 // Audio functions
