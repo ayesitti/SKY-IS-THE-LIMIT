@@ -1,6 +1,6 @@
 # SKY-IS-THE-LIMIT
 Welcome to "The Sky is the Limit" typing game! 
-his game challenges your typing skills by presenting you with words that you need to type correctly and quickly. 
+This game challenges your typing skills by presenting you with words that you need to type correctly and quickly. 
 The game features an angel character that flies higher everytime you type a correct word, and a score system where it computes your WPM at the end of the game. 
 Enjoy the thrill of typing while racing against the clock and avoiding typos!
 
